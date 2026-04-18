@@ -9,6 +9,14 @@ class Penjualan extends Model
     protected $table = 't_penjualan';
     protected $primaryKey = 'penjualan_id';
     protected $guarded = [];
+    protected static function boot()
+    {
+    parent::boot();
+
+    static::deleting(function ($penjualan) {
+        $penjualan->details()->delete();
+    });
+    }
 
     public function details()
     {

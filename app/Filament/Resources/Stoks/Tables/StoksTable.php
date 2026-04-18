@@ -14,29 +14,21 @@ class StoksTable
     {
         return $table
             ->columns([
-                TextColumn::make('supplier_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('barang_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
+                TextColumn::make('supplier.supplier_nama') // Menampilkan Nama Supplier
+                    ->label('Supplier'),
+            
+                TextColumn::make('barang.barang_nama')   // Menampilkan Nama Barang (bukan ID)
+                    ->label('Nama Barang'),
+            
+                TextColumn::make('user.nama')           // Menampilkan Nama User
+                    ->label('Petugas'),
+            
                 TextColumn::make('stok_tanggal')
                     ->dateTime()
                     ->sortable(),
+            
                 TextColumn::make('stok_jumlah')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->label('Jumlah'),
             ])
             ->filters([
                 //
