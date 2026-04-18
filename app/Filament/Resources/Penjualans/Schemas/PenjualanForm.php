@@ -4,6 +4,8 @@ namespace App\Filament\Resources\Penjualans\Schemas;
 
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select; 
+use Filament\Forms\Components\Repeater;
 use Filament\Schemas\Schema;
 
 class PenjualanForm
@@ -12,9 +14,9 @@ class PenjualanForm
     {
         return $schema
             ->components([
-                TextInput::make('user_id')
-                    ->required()
-                    ->numeric(),
+                Select::make('user_id')
+                    ->relationship('user', 'nama') 
+                    ->required(),
                 TextInput::make('pembeli')
                     ->required(),
                 TextInput::make('penjualan_kode')
