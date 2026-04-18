@@ -14,24 +14,20 @@ class PenjualansTable
     {
         return $table
             ->columns([
-                TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('pembeli')
-                    ->searchable(),
                 TextColumn::make('penjualan_kode')
-                    ->searchable(),
-                TextColumn::make('penjualan_tanggal')
-                    ->dateTime()
-                    ->sortable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                ->label('Kode Transaksi')
+                ->searchable(),
+            TextColumn::make('user.nama')
+                ->label('Kasir'),
+            TextColumn::make('pembeli')
+                ->searchable(),
+            TextColumn::make('penjualan_tanggal')
+                ->dateTime('d M Y H:i')
+                ->sortable(),
+            // Menampilkan jumlah item (menghitung relasi details)
+            TextColumn::make('details_count')
+                ->counts('details')
+                ->label('Jumlah Item'),
             ])
             ->filters([
                 //
